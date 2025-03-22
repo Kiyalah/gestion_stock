@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Stock</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showSection('accueil')" class="active">Accueil</a></li>
+            <li><a href="#" onclick="showSection('produits')">Produits</a></li>
+            <li><a href="#" onclick="showSection('ventes')">Ventes</a></li>
+            <li><a href="#" onclick="showSection('fournisseurs')">Fournisseurs</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div id="accueil" class="section">
+            <h1>Bienvenue sur la gestion de stock</h1>
+            <p>Utilisez le menu ci-dessus pour naviguer entre les différentes sections.</p>
+        </div>
+
+        <div id="produits" class="section" style="display: none;">
+            <h2>Gestion des Produits</h2>
+            <button class="primary" onclick="loadProduits()">Rafraîchir la liste</button>
+            <ul id="liste-produits"></ul>
+
+            <h3>Ajouter un Produit</h3>
+            <form id="ajouter-produit">
+                <label for="nom">Nom:</label>
+                <input type="text" id="nom" name="nom" required>
+                <label for="prix">Prix:</label>
+                <input type="number" id="prix" name="prix" step="0.01" required>
+                <label for="stock_id">Stock ID:</label>
+                <input type="number" id="stock_id" name="stock_id" required>
+                <button type="submit" class="primary">Ajouter</button>
+            </form>
+        </div>
+
+        <div id="ventes" class="section" style="display: none;">
+            <h2>Gestion des Ventes</h2>
+            <button class="primary" onclick="loadVentes()">Rafraîchir la liste</button>
+            <ul id="liste-ventes"></ul>
+        </div>
+
+        <div id="fournisseurs" class="section" style="display: none;">
+            <h2>Gestion des Fournisseurs</h2>
+            <button class="primary" onclick="loadFournisseurs()">Rafraîchir la liste</button>
+            <ul id="liste-fournisseurs"></ul>
+
+            <h3>Ajouter un Fournisseur</h3>
+            <form id="ajouter-fournisseur">
+                <label for="nom-fournisseur">Nom:</label>
+                <input type="text" id="nom-fournisseur" name="nom" required>
+                <label for="contact-fournisseur">Contact:</label>
+                <input type="text" id="contact-fournisseur" name="contact" required>
+                <button type="submit" class="primary">Ajouter</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
